@@ -116,26 +116,43 @@ nav{background:rgba(12,18,32,0.75);backdrop-filter:blur(24px);-webkit-backdrop-f
 
 /* PORTFOLIO */
 #portfolio{padding:160px 48px 100px;min-height:100vh;background:var(--bg)}
-.portfolio-header{margin-bottom:48px}
-.portfolio-tag{color:var(--accent);font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
-.portfolio-header h2{font-size:2.8rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff}
-.filters{display:flex;gap:8px;margin-bottom:48px;flex-wrap:wrap}
-.filter-pill{background:var(--glass);backdrop-filter:blur(12px);color:var(--text3);border:1px solid var(--glass-border);padding:10px 22px;border-radius:30px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
-.filter-pill:hover{border-color:var(--glass-border-hover);color:var(--text2)}
-.filter-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.filter-pill .dot{display:inline-block;width:6px;height:6px;background:#fff;border-radius:50%;margin-right:6px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.project-card{padding:32px;cursor:pointer}
-.project-card:hover{box-shadow:0 16px 48px rgba(0,0,0,0.3),0 0 30px var(--accent-glow2);border-color:var(--glass-border-accent)}
-.card-phones{display:flex;gap:8px;justify-content:center;margin-bottom:24px;height:220px;align-items:center;overflow:hidden}
-.card-phone{width:100px;border-radius:16px;overflow:hidden;border:1.5px solid var(--glass-border);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
-.card-phone img{width:100%;display:block}
-.card-tags{display:flex;gap:6px;margin-bottom:12px}
-.card-tag{padding:5px 12px;border-radius:16px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
-.card-tag.blue{background:rgba(59,130,246,0.15);color:var(--accent);border:1px solid rgba(59,130,246,0.2)}
-.card-tag.dark{background:var(--glass);color:var(--text3);border:1px solid var(--glass-border)}
-.card-title{font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;color:#fff}
-.card-desc{color:var(--text3);font-size:0.85rem;line-height:1.6}
+.portfolio-header{margin-bottom:64px;text-align:center}
+.portfolio-tag{color:var(--accent);font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:inline-block;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-border-accent);padding:8px 20px;border-radius:30px}
+.portfolio-header h2{font-size:3.2rem;font-weight:900;text-transform:capitalize;letter-spacing:1px;color:#fff}
+.portfolio-section{margin-bottom:80px}
+.project-header{margin-bottom:32px;padding:0 24px}
+.project-title{font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:8px}
+.project-desc{color:var(--text2);font-size:0.95rem;max-width:500px;line-height:1.6}
+.mockup-scroll{display:flex;gap:16px;overflow-x:auto;padding:24px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:var(--radius);scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+.mockup-scroll::-webkit-scrollbar{height:6px}
+.mockup-scroll::-webkit-scrollbar-track{background:transparent}
+.mockup-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
+.mockup-scroll::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.2)}
+.mockup-item{flex:0 0 auto;width:160px;border-radius:20px;overflow:hidden;border:1.5px solid var(--glass-border);box-shadow:0 8px 24px rgba(0,0,0,0.3);transition:all 0.3s;cursor:pointer}
+.mockup-item:hover{border-color:var(--glass-border-accent);box-shadow:0 12px 32px rgba(0,0,0,0.4),0 0 20px var(--accent-glow2);transform:translateY(-4px)}
+.mockup-item img{width:100%;height:auto;display:block}
+.project-accent-red{border-color:rgba(239,68,68,0.3)}
+.project-accent-red .mockup-scroll{border-color:rgba(239,68,68,0.25)}
+.project-accent-orange{border-color:rgba(251,146,60,0.3)}
+.project-accent-orange .mockup-scroll{border-color:rgba(251,146,60,0.25)}
+.project-accent-amber{border-color:rgba(251,191,36,0.3)}
+.project-accent-amber .mockup-scroll{border-color:rgba(251,191,36,0.25)}
+.project-accent-cyan{border-color:rgba(34,211,238,0.3)}
+.project-accent-cyan .mockup-scroll{border-color:rgba(34,211,238,0.25)}
+.project-accent-violet{border-color:rgba(168,85,247,0.3)}
+.project-accent-violet .mockup-scroll{border-color:rgba(168,85,247,0.25)}
+.project-accent-pink{border-color:rgba(236,72,153,0.3)}
+.project-accent-pink .mockup-scroll{border-color:rgba(236,72,153,0.25)}
+@media(max-width:1024px){
+  .mockup-scroll{padding:20px}
+  .mockup-item{width:150px}
+}
+@media(max-width:768px){
+  .portfolio-header h2{font-size:2.4rem}
+  .project-title{font-size:1.4rem}
+  .mockup-item{width:140px}
+  .portfolio-section{margin-bottom:60px}
+}
 
 /* CTA */
 #cta{padding:160px 48px 120px;min-height:100vh;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,rgba(59,130,246,0.06) 0%,transparent 60%),var(--bg)}
@@ -254,7 +271,6 @@ footer .logo-foot span{color:var(--accent)}
   .hero-phones{min-height:350px}
   .service-block{flex-direction:column}
   .service-phone{flex:none;display:flex;flex-direction:column;align-items:center}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .contact-inner{grid-template-columns:1fr}
   .dash-grid{grid-template-columns:1fr}
 }
@@ -272,7 +288,6 @@ footer .logo-foot span{color:var(--accent)}
   .btn-contact{padding:10px 20px;font-size:0.8rem}
   .btn-accedi{display:none}
   .hero-text h1{font-size:2.5rem}
-  .portfolio-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .service-grid{grid-template-columns:1fr}
   .contact-left h2{font-size:2.5rem}
@@ -382,17 +397,11 @@ footer .logo-foot span{color:var(--accent)}
 <section id="page-portfolio" class="page">
   <div id="portfolio">
     <div class="section-inner">
-      <div class="portfolio-header"><div class="portfolio-tag">OUR PORTFOLIO</div><h2>MOBILE APP DEVELOPMENT</h2></div>
-      <div class="filters">
-        <button class="filter-pill active" onclick="filterAll(this)"><span class="dot"></span>All</button>
-        <button class="filter-pill" onclick="filterCat('food',this)">Food</button>
-        <button class="filter-pill" onclick="filterCat('lifestyle',this)">Lifestyle</button>
-        <button class="filter-pill" onclick="filterCat('travel',this)">Travel</button>
-        <button class="filter-pill" onclick="filterCat('app',this)">App Design</button>
-        <button class="filter-pill" onclick="filterCat('web',this)">Web Design</button>
-        <button class="filter-pill" onclick="filterCat('ecommerce',this)">E-Commerce</button>
+      <div class="portfolio-header">
+        <div class="portfolio-tag">OUR WORK</div>
+        <h2>Project Showcase</h2>
       </div>
-      <div class="portfolio-grid" id="portfolioGrid"></div>
+      <div id="portfolioContainer"></div>
     </div>
   </div>
 </section>
@@ -525,7 +534,7 @@ function navigateTo(pageName) {
     a.classList.toggle('active', a.getAttribute('data-page') === pageName);
   });
   window.scrollTo(0, 0);
-  if (pageName === 'portfolio') renderProjects(projects);
+  if (pageName === 'portfolio') renderPortfolio();
 }
 document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
   a.addEventListener('click', function(e){
@@ -534,32 +543,66 @@ document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
   });
 });
 
-/* ===== PORTFOLIO (no external images) ===== */
-var projects=[
-  {id:1,title:'FLAME KEBAB',cat:['food'],tags:['FOOD','KEBAB'],desc:'A vibrant food ordering app for a premium kebab chain, featuring real-time order tracking...'},
-  {id:2,title:'ALOHA PET RESORTS',cat:['lifestyle'],tags:['LIFESTYLE','PET CARE'],desc:'A premium pet care booking platform with live camera feeds, pet profiles, and resort...'},
-  {id:3,title:'NEXUS FINANCE',cat:['app'],tags:['APP DESIGN','FINTECH'],desc:'A fintech dashboard with real-time charts, portfolio analytics, and AI-powered insights...'},
-  {id:4,title:'LUXE COMMERCE',cat:['ecommerce','web'],tags:['E-COMMERCE','FASHION'],desc:'Full e-commerce experience with editorial-style product pages and AR try-on...'},
-  {id:5,title:'VITALPULSE',cat:['lifestyle','app'],tags:['LIFESTYLE','HEALTH'],desc:'Health & wellness tracking app with AI-powered coaching, activity tracking...'},
-  {id:6,title:'WANDERLUST',cat:['travel'],tags:['TRAVEL','BOOKING'],desc:'Immersive travel platform where stunning photography meets functional booking...'},
-  {id:7,title:'DATAFORGE',cat:['web','app'],tags:['WEB DESIGN','SAAS'],desc:'Enterprise analytics platform with customizable widgets and real-time data streams...'},
-  {id:8,title:'PRISM IDENTITY',cat:['app'],tags:['APP DESIGN','BRANDING'],desc:'Complete brand identity system — logo, typography, color palette, guidelines...'},
-  {id:9,title:'MERIDIA RENTAL',cat:['travel'],tags:['TRAVEL','RENTAL'],desc:'Sleek car rental platform with real-time availability and booking management...'}
+/* ===== PORTFOLIO ===== */
+var baseImageUrl='https://ytrnunswsbgyghzyhyqs.supabase.co/storage/v1/object/public/product-images/nano-banana/20bd6765-f457-4875-b096-a743484d6159/';
+var portfolioProjects=[
+  {
+    id:1,
+    title:'Smile Nails',
+    desc:'Nail salon booking app with premium treatments, styles, and checkout',
+    accent:'red',
+    images:['2aa2a70fde4bab31ebcd8ea5a23c1685-1774885658986.png','a244ef1736f6e015623376e2e8512503-1774885654139.png','aad344dba42c27ec6b486e8a6a122651-1774885650206.png','9b27cbb253a423ee3e042704a887df40-1774885646285.png','7eb383530f4a63113fa4be3bd2c02a5a-1774885641998.png','1bd067bcfb3d5fc89bb78f7813d71a0b-1774885637884.png','caf9f6c24fc7d82bde910d6ca4109184-1774885583080.png','aa0749cc39d63d81a343f8aa7b4cf46b-1774885681720.png']
+  },
+  {
+    id:2,
+    title:'Varrone Steakhouse',
+    desc:'Premium steakhouse with dry-aging tracker, reservations, and wine pairing',
+    accent:'orange',
+    images:['fd9698da15a43ce3783d9de4fa979b29-1774885586221.png','be06a32ae437e0461ba3285a7059ce28-1774885561984.png','9d48a1466cf0770d5819ea5d4af307c7-1774885581932.png','d40f349976dd1b978de599d47e23e882-1774885541026.png','39a30fef7273e4ddb3dfc0d24bf2ded6-1774885536821.png','f4a1b0886c898d2d65a9179c5898f3c9-1774885532550.png','9c81d2bcf9e9146167d33249943fd4d2-1774885528381.png','d3575c026b824015ad23b54c90cf5a79-1774885524439.png']
+  },
+  {
+    id:3,
+    title:'Mare e Vento',
+    desc:'Island tour booking platform for Egadi Islands with real-time availability',
+    accent:'amber',
+    images:['ad488217bb092cc62e3001f225f6d310-1774883966382.png','7ccb5d70a34e3ae890e44d05d4ccbdb1-1774883962483.png','5ad3d624fb7f2e9d02f0f48d0fcc496f-1774883957843.png','10156c83251af33f516f2119592b7712-1774883951019.png','74c588b5dde87db8efeaf2e03124293a-1774883944592.png','301ff06cb88f2d7bb74334605b5ce073-1774883938684.png','083c35672e0862bcdb8df7c1e682f9a0-1774883934448.png','5e78118d0ca9a6b359192f547e7d609f-1774883930148.png']
+  },
+  {
+    id:4,
+    title:'LuxDrive',
+    desc:'Luxury car rental in Monaco with Ferrari, Lamborghini, and Porsche fleet',
+    accent:'cyan',
+    images:['aab9f4ec0979ef3a2b0c9a6420f559c7-1774883835688.png','849b617a3c8865e5ac856da308a067a0-1774883831960.png','cb6409b66dad8b3f40eac21b1d43e8be-1774883827455.png','f7e455b397428b84000c9ce9fca1ed10-1774883823073.png','4d071a6efc6a514f04954c1d40e71f74-1774883802531.png','68fdf67cd52b9ce07cd403b652aa8806-1774883797895.png','535292043bed91290360b4cc9aa6dbe3-1774883793443.png','54127ddc94bf37874cc407ed9eb47713-1774883789079.png']
+  },
+  {
+    id:5,
+    title:'Royal Padel',
+    desc:'Padel court booking app with lessons, tournaments, and Milano Est location',
+    accent:'violet',
+    images:['c564714e5ed39e6bc1cb97eaab1ff379-1774881899445.png','c3c95dce0635e45c76d3a4aa7deda1c2-1774881895660.png','32a269f326d816517ed0ca1d5171930e-1774881891508.png','f41fe9a3be2b7f522cfd1a7164103306-1774881887478.png','69b8ea5084cc45b8b9f36892f3187f7f-1774881883524.png','44ae1933d213087533164d32781b48d7-1774881879266.png','197f8f70c7dc515dcaff57f93a5faf02-1774881875306.png','b9b1df201ac041da64ca9abc6faa1f4d-1774881871531.png']
+  },
+  {
+    id:6,
+    title:'Ryo Sushi',
+    desc:'Japanese AYCE restaurant with real-time ordering and kitchen integration',
+    accent:'pink',
+    images:['65c9545c6bf407c7a02b9cc700f898b2-1774881302241.png','eaecde12c650dcdc112537ae9d6bc269-1774881298059.png','6c25b812f5a8a3c392f6a2deb8f65370-1774881293686.png','62eb565d3bdccf831f0c45af467fe79a-1774881289861.png','8f2e281f62e1f1169790e5d91df8816b-1774881285944.png','9410a4119ed703698d9ab215045a7cb9-1774881282076.png','6b48ef42aedd584c759afce1a1426d07-1774881277912.png','8fe43f1e31b632f6af92fdac4f13199b-1774881273655.png']
+  }
 ];
-function renderProjects(list){
-  var g=document.getElementById('portfolioGrid');
-  if(!g) return;
-  g.innerHTML='';
-  list.forEach(function(p){
-    var t=p.tags.map(function(t,i){return '<span class="card-tag '+(i===0?'blue':'dark')+'">'+t+'</span>';}).join('');
-    var ph='<div class="card-phone"><div class="img-placeholder" style="width:100px;height:180px;border-radius:16px">Mockup</div></div><div class="card-phone"><div class="img-placeholder" style="width:100px;height:180px;border-radius:16px">Mockup</div></div><div class="card-phone"><div class="img-placeholder" style="width:100px;height:180px;border-radius:16px">Mockup</div></div>';
-    g.innerHTML+='<div class="project-card glass"><div class="card-phones">'+ph+'</div><div class="card-tags">'+t+'</div><div class="card-title">'+p.title+'</div><div class="card-desc">'+p.desc+'</div></div>';
+
+function renderPortfolio(){
+  var container=document.getElementById('portfolioContainer');
+  if(!container) return;
+  container.innerHTML='';
+  portfolioProjects.forEach(function(project){
+    var imagesHtml=project.images.map(function(img){
+      return '<img src="'+baseImageUrl+img+'" alt="'+project.title+' mockup" loading="lazy" class="mockup-item">';
+    }).join('');
+    var projectHtml='<div class="portfolio-section project-accent-'+project.accent+'"><div class="project-header"><h3 class="project-title">'+project.title+'</h3><p class="project-desc">'+project.desc+'</p></div><div class="mockup-scroll">'+imagesHtml+'</div></div>';
+    container.innerHTML+=projectHtml;
   });
 }
-renderProjects(projects);
-
-function filterAll(btn){document.querySelectorAll('.filter-pill').forEach(function(b){b.classList.remove('active');b.innerHTML=b.textContent;});btn.classList.add('active');btn.innerHTML='<span class="dot"></span>'+btn.textContent;renderProjects(projects);}
-function filterCat(cat,btn){document.querySelectorAll('.filter-pill').forEach(function(b){b.classList.remove('active');b.innerHTML=b.textContent;});btn.classList.add('active');renderProjects(projects.filter(function(p){return p.cat.indexOf(cat)!==-1;}));}
+renderPortfolio();
 
 /* ===== MODAL & DASHBOARD ===== */
 function openModal(type){document.getElementById('loginModal').classList.add('active');if(type==='login'){document.getElementById('loginForm').style.display='block';document.getElementById('signupForm').style.display='none';}else{document.getElementById('loginForm').style.display='none';document.getElementById('signupForm').style.display='block';}}
