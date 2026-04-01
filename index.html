@@ -28,7 +28,6 @@ a{text-decoration:none;color:inherit}
   --glass-border:rgba(255,255,255,0.08);
   --glass-border-hover:rgba(255,255,255,0.15);
   --glass-border-accent:rgba(59,130,246,0.25);
-  --blur:20px;
   --text:#e8ecf2;
   --text2:#8a95a8;
   --text3:#555f70;
@@ -38,7 +37,7 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav-wrap{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 64px);max-width:1340px}
-nav{background:rgba(12,18,32,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:60px;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--glass-border);will-change:transform}
+nav{background:rgba(12,18,32,0.92);border-radius:60px;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--glass-border);transform:translateZ(0);will-change:backdrop-filter,transform}
 .nav-logo{font-size:1.2rem;font-weight:800;letter-spacing:1px;color:#fff}
 .nav-logo span{color:var(--accent)}
 .nav-links{display:flex;gap:32px;align-items:center}
