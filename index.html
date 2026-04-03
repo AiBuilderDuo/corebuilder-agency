@@ -475,6 +475,27 @@ select.form-input option{background:#0c1220;color:#fff}
   .form-header-tag{background:rgba(37,99,235,0.06)}
   .star-rating{color:#e8a000}
   .stars{color:#e8a000}
+  /* FIX: Hamburger menu visibility in light mode */
+  .hamburger span{background:#1a1f2e}
+  /* FIX: Nav fully opaque - no content bleed-through */
+  nav{background:rgba(245,247,250,0.98);box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+  /* FIX: Mobile nav dropdown light mode */
+  .nav-links{background:rgba(245,247,250,0.98) !important;box-shadow:0 12px 32px rgba(0,0,0,0.12) !important}
+  .nav-links a:hover,.nav-links a.active{background:rgba(0,0,0,0.05);color:#1a1f2e}
+  /* FIX: Milestone dots and lines visibility in light mode */
+  .milestone-dot.inactive{background:rgba(0,0,0,0.12)}
+  .milestone-line.inactive{background:rgba(0,0,0,0.08)}
+  .milestone-line{background:linear-gradient(90deg,var(--accent),rgba(37,99,235,0.25))}
+  /* FIX: Service block text contrast */
+  .service-info h3{color:#1a1f2e}
+  .service-block{background:rgba(255,255,255,0.7)}
+  /* FIX: Button glass CTA contrast */
+  .btn-glass-cta{background:rgba(30,40,60,0.85);color:#fff;border-color:rgba(0,0,0,0.12)}
+  .btn-glass-cta:hover{background:rgba(30,40,60,0.95);border-color:rgba(0,0,0,0.2)}
+  /* FIX: Hero watermark less visible */
+  .hero-watermark{color:rgba(37,99,235,0.02)}
+  /* FIX: Phone mockup shadows lighter */
+  .phone-1,.phone-2{box-shadow:0 12px 32px rgba(0,0,0,0.12)}
 }
 </style>
 </head>
