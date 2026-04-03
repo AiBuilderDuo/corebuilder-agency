@@ -877,7 +877,7 @@ function renderPortfolio(){
     card.className='portfolio-card';
     card.onclick=function(){openProjectDetail(project.id);};
     var tagsHtml=project.tags.map(function(t){return '<span class="card-tag">'+t+'</span>';}).join('');
-    card.innerHTML='<div class="card-arrow">↗</div><div class="card-phones"><div class="card-phone"><img src="'+baseImageUrl+project.images[0]+'" alt="'+project.title+'" loading="lazy"></div><div class="card-phone"><img src="'+baseImageUrl+project.images[1]+'" alt="'+project.title+'" loading="lazy"></div></div><div class="card-info"><div class="card-tags">'+tagsHtml+'</div><div class="card-title">'+project.title+'</div><div class="card-desc">'+project.desc+'</div></div>';
+    card.innerHTML='<div class="card-arrow">↗</div><div class="card-phones"><div class="card-phone"><img src="'+baseImageUrl+project.images[0]+'" alt="'+project.title+'" loading="eager"></div><div class="card-phone"><img src="'+baseImageUrl+project.images[1]+'" alt="'+project.title+'" loading="eager"></div></div><div class="card-info"><div class="card-tags">'+tagsHtml+'</div><div class="card-title">'+project.title+'</div><div class="card-desc">'+project.desc+'</div></div>';
     container.appendChild(card);
   });
 }
