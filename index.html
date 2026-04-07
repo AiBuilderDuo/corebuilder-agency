@@ -109,8 +109,15 @@ nav{background:rgba(12,18,32,0.92);border-radius:60px;padding:16px 36px;display:
 .milestone-track{display:flex;align-items:center}
 .milestone-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 10px var(--accent-glow)}
 .milestone-dot.inactive{background:rgba(255,255,255,0.1);box-shadow:none}
-.milestone-line{flex:1;height:2px;background:linear-gradient(90deg,var(--accent),rgba(59,130,246,0.15))}
+.milestone-line{flex:1;height:2px;background:var(--accent)}
 .milestone-line.inactive{background:rgba(255,255,255,0.06)}
+/* Milestone progress animation */
+.milestone-animated .ms-d{background:var(--accent);box-shadow:0 0 10px var(--accent-glow);opacity:0;transform:scale(0);animation:msDotIn 0.5s ease forwards}
+.milestone-animated .ms-d{animation-delay:calc(var(--ms-i) * 0.6s)}
+.milestone-animated .ms-l{background:var(--accent);transform:scaleX(0);transform-origin:left;animation:msLineIn 0.4s ease forwards}
+.milestone-animated .ms-l{animation-delay:calc(var(--ms-i) * 0.6s + 0.3s)}
+@keyframes msDotIn{0%{opacity:0;transform:scale(0)}60%{opacity:1;transform:scale(1.3)}100%{opacity:1;transform:scale(1)}}
+@keyframes msLineIn{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
 .milestone-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:0.72rem;color:var(--text3);letter-spacing:0;gap:4px}
 .tech-label{font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:12px}
 .tech-stack{display:flex;gap:16px}
@@ -493,9 +500,10 @@ select.form-input option{background:#0c1220;color:#fff}
   .nav-links{background:rgba(245,247,250,0.98) !important;box-shadow:0 12px 32px rgba(0,0,0,0.12) !important}
   .nav-links a:hover,.nav-links a.active{background:rgba(0,0,0,0.05);color:#1a1f2e}
   /* FIX: Milestone dots ALL blue in light mode */
-  .milestone-dot.inactive{background:rgba(37,99,235,0.35);box-shadow:0 0 6px rgba(37,99,235,0.1)}
-  .milestone-line.inactive{background:rgba(37,99,235,0.15)}
-  .milestone-line{background:linear-gradient(90deg,var(--accent),rgba(37,99,235,0.35))}
+  .milestone-dot{background:var(--accent);box-shadow:0 0 8px rgba(37,99,235,0.2)}
+  .milestone-dot.inactive{background:var(--accent);box-shadow:0 0 8px rgba(37,99,235,0.2)}
+  .milestone-line{background:var(--accent)}
+  .milestone-line.inactive{background:var(--accent)}
   /* FIX: Service block text contrast */
   .service-info h3{color:#1a1f2e}
   .service-block{background:rgba(255,255,255,0.7)}
@@ -563,7 +571,7 @@ select.form-input option{background:#0c1220;color:#fff}
       <div class="service-block glass">
         <div class="service-phone">
           <div class="service-tag">← FRONTEND</div>
-          <div class="service-phone-frame"><div class="img-placeholder" style="width:100%;height:380px">Your Mockup</div></div>
+          <div class="service-phone-frame"><img src="https://ytrnunswsbgyghzyhyqs.supabase.co/storage/v1/object/public/product-images/nano-banana/20bd6765-f457-4875-b096-a743484d6159/aad344dba42c27ec6b486e8a6a122651-1774885650206.png" alt="Frontend Mockup" style="width:100%;display:block;aspect-ratio:9/19.5;object-fit:cover"></div>
         </div>
         <div class="service-info">
           <h3>🖥️ Frontend & User Experience</h3>
@@ -574,7 +582,7 @@ select.form-input option{background:#0c1220;color:#fff}
             <div class="service-item"><span class="ico">🎨</span> Design Systems</div>
             <div class="service-item"><span class="ico">⚡</span> Motion & Animation</div>
           </div>
-          <div class="milestones"><div class="milestones-label">PROJECT MILESTONES</div><div class="milestone-track"><div class="milestone-dot"></div><div class="milestone-line"></div><div class="milestone-dot"></div><div class="milestone-line"></div><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div></div><div class="milestone-labels"><span>Discovery</span><span>Design</span><span>Development</span><span>Testing</span><span>Launch</span></div></div>
+          <div class="milestones"><div class="milestones-label">PROJECT MILESTONES</div><div class="milestone-track milestone-animated"><div class="milestone-dot ms-d" style="--ms-i:0"></div><div class="milestone-line ms-l" style="--ms-i:0"></div><div class="milestone-dot ms-d" style="--ms-i:1"></div><div class="milestone-line ms-l" style="--ms-i:1"></div><div class="milestone-dot ms-d" style="--ms-i:2"></div><div class="milestone-line ms-l" style="--ms-i:2"></div><div class="milestone-dot ms-d" style="--ms-i:3"></div><div class="milestone-line ms-l" style="--ms-i:3"></div><div class="milestone-dot ms-d" style="--ms-i:4"></div></div><div class="milestone-labels"><span>Discovery</span><span>Design</span><span>Development</span><span>Testing</span><span>Launch</span></div></div>
           <div class="tech-label">TECH STACK</div>
           <div class="tech-stack"><div class="tech-icon">⚛️<br><span style="font-size:0.55rem">React</span></div><div class="tech-icon">🟢<br><span style="font-size:0.55rem">Node</span></div><div class="tech-icon">◆<br><span style="font-size:0.55rem">GraphQL</span></div><div class="tech-icon">☁️<br><span style="font-size:0.55rem">AWS</span></div></div>
         </div>
@@ -582,7 +590,7 @@ select.form-input option{background:#0c1220;color:#fff}
       <div class="service-block glass">
         <div class="service-phone">
           <div class="service-tag">← BACKEND</div>
-          <div class="service-phone-frame"><div class="img-placeholder" style="width:100%;height:380px">Your Mockup</div></div>
+          <div class="service-phone-frame"><img src="https://ytrnunswsbgyghzyhyqs.supabase.co/storage/v1/object/public/product-images/nano-banana/20bd6765-f457-4875-b096-a743484d6159/10156c83251af33f516f2119592b7712-1774883951019.png" alt="Backend Mockup" style="width:100%;display:block;aspect-ratio:9/19.5;object-fit:cover"></div>
         </div>
         <div class="service-info">
           <h3>🛠️ Backend & Admin Panels</h3>
@@ -593,7 +601,7 @@ select.form-input option{background:#0c1220;color:#fff}
             <div class="service-item"><span class="ico">🗄️</span> Database Architecture</div>
             <div class="service-item"><span class="ico">🔒</span> Auth & Security</div>
           </div>
-          <div class="milestones"><div class="milestones-label">PROJECT MILESTONES</div><div class="milestone-track"><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div><div class="milestone-line inactive"></div><div class="milestone-dot inactive"></div></div><div class="milestone-labels"><span>Discovery</span><span>Design</span><span>Development</span><span>Testing</span><span>Launch</span></div></div>
+          <div class="milestones"><div class="milestones-label">PROJECT MILESTONES</div><div class="milestone-track milestone-animated"><div class="milestone-dot ms-d" style="--ms-i:0"></div><div class="milestone-line ms-l" style="--ms-i:0"></div><div class="milestone-dot ms-d" style="--ms-i:1"></div><div class="milestone-line ms-l" style="--ms-i:1"></div><div class="milestone-dot ms-d" style="--ms-i:2"></div><div class="milestone-line ms-l" style="--ms-i:2"></div><div class="milestone-dot ms-d" style="--ms-i:3"></div><div class="milestone-line ms-l" style="--ms-i:3"></div><div class="milestone-dot ms-d" style="--ms-i:4"></div></div><div class="milestone-labels"><span>Discovery</span><span>Design</span><span>Development</span><span>Testing</span><span>Launch</span></div></div>
           <div class="tech-label">TECH STACK</div>
           <div class="tech-stack"><div class="tech-icon">🐍<br><span style="font-size:0.55rem">Python</span></div><div class="tech-icon">🐘<br><span style="font-size:0.55rem">Postgres</span></div><div class="tech-icon">🐳<br><span style="font-size:0.55rem">Docker</span></div><div class="tech-icon">☁️<br><span style="font-size:0.55rem">Firebase</span></div></div>
         </div>
@@ -980,6 +988,23 @@ function switchToSignup(){document.getElementById('loginForm').style.display='no
 function switchToLogin(){document.getElementById('loginForm').style.display='block';document.getElementById('signupForm').style.display='none';}
 function openDashboard(){closeModal();document.getElementById('site-content').style.display='none';document.getElementById('dashboard').style.display='block';window.scrollTo(0,0);}
 function closeDashboard(){document.getElementById('dashboard').style.display='none';document.getElementById('site-content').style.display='block';navigateTo('home');}
+
+// Milestone animation on scroll
+(function(){
+  var tracks=document.querySelectorAll('.milestone-animated');
+  tracks.forEach(function(t){
+    t.querySelectorAll('.ms-d,.ms-l').forEach(function(el){el.style.animationPlayState='paused';});
+  });
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.ms-d,.ms-l').forEach(function(el){el.style.animationPlayState='running';});
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.5});
+  tracks.forEach(function(t){obs.observe(t);});
+})();
 </script>
 </body>
 </html>
