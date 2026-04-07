@@ -79,9 +79,11 @@ nav{background:rgba(12,18,32,0.92);border-radius:60px;padding:16px 36px;display:
 .btn-glass-cta:hover{border-color:var(--glass-border-hover);background:rgba(18,24,38,0.9)}
 .hero-phones{flex:1;position:relative;display:flex;justify-content:center;align-items:center;min-height:500px}
 .phone-mockup{width:240px;border-radius:32px;overflow:hidden;position:absolute;border:2px solid var(--glass-border)}
-.phone-mockup img{width:100%;display:block}
-.phone-1{transform:rotate(-8deg);z-index:2;left:10%;box-shadow:0 16px 40px rgba(0,0,0,0.5)}
-.phone-2{transform:rotate(6deg);z-index:1;right:5%;box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+.phone-mockup img{width:100%;display:block;aspect-ratio:9/19.5;object-fit:cover}
+.phone-1{transform:rotate(-8deg);z-index:2;left:10%;box-shadow:0 16px 40px rgba(0,0,0,0.5);animation:floatPhone1 4s ease-in-out infinite}
+.phone-2{transform:rotate(6deg);z-index:1;right:5%;box-shadow:0 16px 40px rgba(0,0,0,0.4);animation:floatPhone2 4s ease-in-out infinite}
+@keyframes floatPhone1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-8deg) translateY(-14px)}}
+@keyframes floatPhone2{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(6deg) translateY(10px)}}
 .hero-watermark{position:absolute;right:-60px;bottom:-60px;font-size:380px;font-weight:900;color:rgba(59,130,246,0.03);line-height:1;pointer-events:none}
 
 /* SERVICES */
@@ -333,9 +335,11 @@ select.form-input option{background:#0c1220;color:#fff}
   .hero-text h1{font-size:2.5rem}
   .hero-phones{min-height:auto;display:flex;position:relative;justify-content:center;gap:0;padding:20px 0}
   .phone-mockup{width:120px;position:relative;left:auto;right:auto;border-radius:20px}
-  .phone-1{transform:rotate(-6deg);box-shadow:0 8px 20px rgba(0,0,0,0.4);margin-right:-16px}
-  .phone-2{transform:rotate(6deg);box-shadow:0 8px 20px rgba(0,0,0,0.4);margin-left:-16px}
-  .phone-mockup .img-placeholder{height:240px !important}
+  .phone-1{transform:rotate(-6deg);box-shadow:0 8px 20px rgba(0,0,0,0.4);margin-right:-16px;animation:floatMobile1 4s ease-in-out infinite}
+  .phone-2{transform:rotate(6deg);box-shadow:0 8px 20px rgba(0,0,0,0.4);margin-left:-16px;animation:floatMobile2 4s ease-in-out infinite}
+  @keyframes floatMobile1{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-10px)}}
+  @keyframes floatMobile2{0%,100%{transform:rotate(6deg) translateY(0)}50%{transform:rotate(6deg) translateY(8px)}}
+  .phone-mockup img{aspect-ratio:9/19.5;object-fit:cover}
   .hero-watermark{display:none}
   #hero{padding:120px 24px 60px}
   .hero-btns{flex-direction:column;align-items:center;gap:12px}
@@ -540,8 +544,8 @@ select.form-input option{background:#0c1220;color:#fff}
         </div>
       </div>
       <div class="hero-phones">
-        <div class="phone-mockup phone-1"><div class="img-placeholder" style="width:100%;height:420px">Your Mockup</div></div>
-        <div class="phone-mockup phone-2"><div class="img-placeholder" style="width:100%;height:420px">Your Mockup</div></div>
+        <div class="phone-mockup phone-1"><img src="https://ytrnunswsbgyghzyhyqs.supabase.co/storage/v1/object/public/product-images/nano-banana/20bd6765-f457-4875-b096-a743484d6159/9b27cbb253a423ee3e042704a887df40-1774885646285.png" alt="Smile Nails App" loading="eager"></div>
+        <div class="phone-mockup phone-2"><img src="https://ytrnunswsbgyghzyhyqs.supabase.co/storage/v1/object/public/product-images/nano-banana/20bd6765-f457-4875-b096-a743484d6159/d40f349976dd1b978de599d47e23e882-1774885541026.png" alt="Varrone App" loading="eager"></div>
       </div>
     </div>
     <div class="hero-watermark">D</div>
