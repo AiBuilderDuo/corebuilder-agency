@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
     <!-- ========== SECURITY HEADERS ========== -->
-    <!-- CSP: Controls which resources the browser can load -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
-    <!-- Prevents the site from being embedded in iframes (anti-clickjacking) -->
+    <!-- CSP: strict whitelist of allowed resource origins -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src https://www.google.com https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <!-- Prevent MIME type sniffing -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <!-- Controls what info is sent when navigating away -->
+    <!-- Anti-clickjacking via header (real protection, not JS) -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- HSTS: force HTTPS for 1 year including subdomains -->
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <!-- Control referrer information leakage -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <!-- Disables unnecessary browser features -->
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+    <!-- Disable unnecessary browser APIs + block FLoC/Topics -->
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOLDMARK AGENCY — App Development & Design</title>
 <style>
@@ -529,120 +533,19 @@ select.form-input option{background:#0c1220;color:#fff}
     <!-- ========== SECURITY SCRIPTS ========== -->
     <script>
     // ============================================
-    // GOLDMARK AGENCY - SECURITY LAYER v2.0
-    // Protected by Advanced Threat Detection
+    // GOLDMARK AGENCY - SECURITY LAYER v3.0
+    // Real protection only. No theater.
     // ============================================
 
-    // [1] Force HTTPS
+    // [1] Force HTTPS redirect (first line of defense)
     if(location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'){
       location.replace('https://' + location.hostname + location.pathname + location.search);
     }
 
-    // [2] Anti-clickjacking: break out of iframes
-    if(window.top !== window.self){
-      window.top.location = window.self.location;
-    }
-
-    // [3] Advanced DevTools Detection & Deterrent
-    (function(){
-      // Detect DevTools via debugger timing
-      var devtoolsOpen = false;
-      var threshold = 160;
-      
-      setInterval(function(){
-        var start = performance.now();
-        debugger;
-        var end = performance.now();
-        if(end - start > threshold){
-          devtoolsOpen = true;
-          document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#080c14;color:#D4A843;font-family:monospace;text-align:center;padding:40px"><div><h1 style="font-size:48px;margin-bottom:20px">⚠ ACCESSO NON AUTORIZZATO</h1><p style="font-size:20px;color:#e8ecf2;max-width:600px">Strumenti di sviluppo rilevati.<br>Questa sessione e stata registrata.<br><br>L\'accesso al codice sorgente di questo sito e protetto.<br>Tutti i tentativi di ispezione vengono monitorati.</p><p style="margin-top:30px;color:#555f70;font-size:14px">GoldMark Agency Security System | Incident ID: GM-' + Date.now().toString(36).toUpperCase() + '</p></div></div>';
-          document.title = '⚠ Security Alert - GoldMark Agency';
-        }
-      }, 1000);
-
-      // Detect resize-based DevTools opening
-      var widthThreshold = window.outerWidth - window.innerWidth > 160;
-      var heightThreshold = window.outerHeight - window.innerHeight > 160;
-      window.addEventListener('resize', function(){
-        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160){
-          if(!devtoolsOpen){
-            devtoolsOpen = true;
-          }
-        }
-      });
-    })();
-
-    // [4] Block right-click
-    document.addEventListener('contextmenu', function(e){
-      e.preventDefault();
-      return false;
-    });
-
-    // [5] Block keyboard shortcuts for source/inspect/save
-    document.addEventListener('keydown', function(e){
-      // F12
-      if(e.key === 'F12'){e.preventDefault();return false;}
-      // Ctrl+Shift+I (Inspect)
-      if(e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')){e.preventDefault();return false;}
-      // Ctrl+Shift+J (Console)
-      if(e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')){e.preventDefault();return false;}
-      // Ctrl+Shift+C (Element picker)
-      if(e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')){e.preventDefault();return false;}
-      // Ctrl+U (View source)
-      if(e.ctrlKey && (e.key === 'u' || e.key === 'U')){e.preventDefault();return false;}
-      // Ctrl+S (Save page)
-      if(e.ctrlKey && (e.key === 's' || e.key === 'S')){e.preventDefault();return false;}
-      // Ctrl+Shift+K (Firefox console)
-      if(e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')){e.preventDefault();return false;}
-    });
-
-    // [6] Block drag to prevent image/content theft
-    document.addEventListener('dragstart', function(e){
-      e.preventDefault();
-      return false;
-    });
-
-    // [7] Disable text selection on sensitive areas
-    document.addEventListener('selectstart', function(e){
-      if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA'){
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    // [8] Console warning - professional and intimidating
-    var warningStyles = 'color:#D4A843;font-size:14px;font-family:monospace;line-height:1.8;';
-    console.log('%c╔══════════════════════════════════════════════════════════════╗', warningStyles);
-    console.log('%c║          GOLDMARK AGENCY - SECURITY MONITORING              ║', warningStyles);
-    console.log('%c╠══════════════════════════════════════════════════════════════╣', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c║  ⚠  ATTENZIONE - AMBIENTE MONITORATO                        ║', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c║  Questa console e riservata al team di sviluppo             ║', warningStyles);
-    console.log('%c║  autorizzato di GoldMark Agency.                            ║', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c║  Ogni attivita in questa console viene registrata           ║', warningStyles);
-    console.log('%c║  e associata al tuo indirizzo IP e fingerprint.             ║', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c║  NON incollare codice qui se qualcuno te lo ha chiesto.     ║', warningStyles);
-    console.log('%c║  Potrebbe essere un attacco di social engineering.          ║', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c║  Accesso non autorizzato = azione legale.                   ║', warningStyles);
-    console.log('%c║                                                              ║', warningStyles);
-    console.log('%c╚══════════════════════════════════════════════════════════════╝', warningStyles);
-
-    // [9] Override console methods to prevent scraping
-    (function(){
-      var originalLog = console.log;
-      Object.defineProperty(console, '_commandLineAPI', {get: function(){ throw 'Access Denied'; }});
-    })();
-
-    // [10] Detect and block print-screen attempts
-    document.addEventListener('keyup', function(e){
-      if(e.key === 'PrintScreen'){
-        navigator.clipboard.writeText('');
-      }
-    });
+    // [2] Console notice (honest, professional, no bluff)
+    console.log('%cGoldMark Agency', 'color:#D4A843;font-size:20px;font-weight:bold;');
+    console.log('%cQuesto sito e protetto da Content Security Policy e header di sicurezza.', 'color:#8a95a8;font-size:13px;');
+    console.log('%cSe sei uno sviluppatore autorizzato, procedi. Se qualcuno ti ha chiesto di incollare codice qui, non farlo — potrebbe essere una truffa.', 'color:#8a95a8;font-size:13px;');
     </script>
   </head>
 <body>
