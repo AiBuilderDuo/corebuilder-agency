@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+    <!-- ========== SECURITY HEADERS ========== -->
+    <!-- CSP: Controls which resources the browser can load -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <!-- Prevents the site from being embedded in iframes (anti-clickjacking) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- Controls what info is sent when navigating away -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Disables unnecessary browser features -->
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOLDMARK AGENCY — App Development & Design</title>
 <style>
@@ -516,7 +525,42 @@ select.form-input option{background:#0c1220;color:#fff}
   .phone-1,.phone-2{box-shadow:0 12px 32px rgba(0,0,0,0.12)}
 }
 </style>
-</head>
+
+    <!-- ========== SECURITY SCRIPTS ========== -->
+    <script>
+    // Force HTTPS redirect
+    if(location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'){
+      location.replace('https://' + location.hostname + location.pathname + location.search);
+    }
+
+    // Anti-clickjacking: break out of iframes
+    if(window.top !== window.self){
+      window.top.location = window.self.location;
+    }
+
+    // Disable right-click source view (basic anti-copy)
+    document.addEventListener('contextmenu', function(e){
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable common keyboard shortcuts for source view
+    document.addEventListener('keydown', function(e){
+      if(e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')){
+        e.preventDefault();
+        return false;
+      }
+      if(e.key === 'F12'){
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Console warning for social engineering attacks
+    console.log('%cATTENZIONE!', 'color:red;font-size:40px;font-weight:bold;');
+    console.log('%cQuesta console e riservata agli sviluppatori. Non incollare codice qui se qualcuno te lo ha chiesto: potrebbe essere una truffa.', 'color:red;font-size:16px;');
+    </script>
+  </head>
 <body>
 
 <div id="site-content">
@@ -660,7 +704,7 @@ select.form-input option{background:#0c1220;color:#fff}
       <div class="contact-left">
         <h2>Let's<br>Build<span class="dot" style="color:var(--accent)">.</span></h2>
         <p>Ready to bring your app, website or AI agent system to life? Tell us about your business and we'll map the best path forward.</p>
-        <div class="contact-card"><div class="contact-card-icon">✉</div><div class="contact-card-text"><strong>ai.builder@hotmail.com</strong><span>Email us anytime</span></div></div>
+        <div class="contact-card"><div class="contact-card-icon">✉</div><div class="contact-card-text"><strong>&#97;&#105;&#46;&#98;&#117;&#105;&#108;&#100;&#101;&#114;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</strong><span>Email us anytime</span></div></div>
         <div class="contact-card"><div class="contact-card-icon">📍</div><div class="contact-card-text"><strong>Milano, Italia</strong><span>Digital-first Agency</span></div></div>
         <div class="contact-card"><div class="contact-card-icon">📞</div><div class="contact-card-text"><strong>Available on request</strong><span>Mon – Fri, 9–18</span></div></div>
         <div class="trust-row">
