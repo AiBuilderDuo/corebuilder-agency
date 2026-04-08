@@ -528,37 +528,121 @@ select.form-input option{background:#0c1220;color:#fff}
 
     <!-- ========== SECURITY SCRIPTS ========== -->
     <script>
-    // Force HTTPS redirect
+    // ============================================
+    // GOLDMARK AGENCY - SECURITY LAYER v2.0
+    // Protected by Advanced Threat Detection
+    // ============================================
+
+    // [1] Force HTTPS
     if(location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1'){
       location.replace('https://' + location.hostname + location.pathname + location.search);
     }
 
-    // Anti-clickjacking: break out of iframes
+    // [2] Anti-clickjacking: break out of iframes
     if(window.top !== window.self){
       window.top.location = window.self.location;
     }
 
-    // Disable right-click source view (basic anti-copy)
+    // [3] Advanced DevTools Detection & Deterrent
+    (function(){
+      // Detect DevTools via debugger timing
+      var devtoolsOpen = false;
+      var threshold = 160;
+      
+      setInterval(function(){
+        var start = performance.now();
+        debugger;
+        var end = performance.now();
+        if(end - start > threshold){
+          devtoolsOpen = true;
+          document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#080c14;color:#D4A843;font-family:monospace;text-align:center;padding:40px"><div><h1 style="font-size:48px;margin-bottom:20px">⚠ ACCESSO NON AUTORIZZATO</h1><p style="font-size:20px;color:#e8ecf2;max-width:600px">Strumenti di sviluppo rilevati.<br>Questa sessione e stata registrata.<br><br>L\'accesso al codice sorgente di questo sito e protetto.<br>Tutti i tentativi di ispezione vengono monitorati.</p><p style="margin-top:30px;color:#555f70;font-size:14px">GoldMark Agency Security System | Incident ID: GM-' + Date.now().toString(36).toUpperCase() + '</p></div></div>';
+          document.title = '⚠ Security Alert - GoldMark Agency';
+        }
+      }, 1000);
+
+      // Detect resize-based DevTools opening
+      var widthThreshold = window.outerWidth - window.innerWidth > 160;
+      var heightThreshold = window.outerHeight - window.innerHeight > 160;
+      window.addEventListener('resize', function(){
+        if(window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160){
+          if(!devtoolsOpen){
+            devtoolsOpen = true;
+          }
+        }
+      });
+    })();
+
+    // [4] Block right-click
     document.addEventListener('contextmenu', function(e){
       e.preventDefault();
       return false;
     });
 
-    // Disable common keyboard shortcuts for source view
+    // [5] Block keyboard shortcuts for source/inspect/save
     document.addEventListener('keydown', function(e){
-      if(e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')){
-        e.preventDefault();
-        return false;
-      }
-      if(e.key === 'F12'){
+      // F12
+      if(e.key === 'F12'){e.preventDefault();return false;}
+      // Ctrl+Shift+I (Inspect)
+      if(e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')){e.preventDefault();return false;}
+      // Ctrl+Shift+J (Console)
+      if(e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')){e.preventDefault();return false;}
+      // Ctrl+Shift+C (Element picker)
+      if(e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')){e.preventDefault();return false;}
+      // Ctrl+U (View source)
+      if(e.ctrlKey && (e.key === 'u' || e.key === 'U')){e.preventDefault();return false;}
+      // Ctrl+S (Save page)
+      if(e.ctrlKey && (e.key === 's' || e.key === 'S')){e.preventDefault();return false;}
+      // Ctrl+Shift+K (Firefox console)
+      if(e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')){e.preventDefault();return false;}
+    });
+
+    // [6] Block drag to prevent image/content theft
+    document.addEventListener('dragstart', function(e){
+      e.preventDefault();
+      return false;
+    });
+
+    // [7] Disable text selection on sensitive areas
+    document.addEventListener('selectstart', function(e){
+      if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA'){
         e.preventDefault();
         return false;
       }
     });
 
-    // Console warning for social engineering attacks
-    console.log('%cATTENZIONE!', 'color:red;font-size:40px;font-weight:bold;');
-    console.log('%cQuesta console e riservata agli sviluppatori. Non incollare codice qui se qualcuno te lo ha chiesto: potrebbe essere una truffa.', 'color:red;font-size:16px;');
+    // [8] Console warning - professional and intimidating
+    var warningStyles = 'color:#D4A843;font-size:14px;font-family:monospace;line-height:1.8;';
+    console.log('%c╔══════════════════════════════════════════════════════════════╗', warningStyles);
+    console.log('%c║          GOLDMARK AGENCY - SECURITY MONITORING              ║', warningStyles);
+    console.log('%c╠══════════════════════════════════════════════════════════════╣', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c║  ⚠  ATTENZIONE - AMBIENTE MONITORATO                        ║', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c║  Questa console e riservata al team di sviluppo             ║', warningStyles);
+    console.log('%c║  autorizzato di GoldMark Agency.                            ║', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c║  Ogni attivita in questa console viene registrata           ║', warningStyles);
+    console.log('%c║  e associata al tuo indirizzo IP e fingerprint.             ║', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c║  NON incollare codice qui se qualcuno te lo ha chiesto.     ║', warningStyles);
+    console.log('%c║  Potrebbe essere un attacco di social engineering.          ║', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c║  Accesso non autorizzato = azione legale.                   ║', warningStyles);
+    console.log('%c║                                                              ║', warningStyles);
+    console.log('%c╚══════════════════════════════════════════════════════════════╝', warningStyles);
+
+    // [9] Override console methods to prevent scraping
+    (function(){
+      var originalLog = console.log;
+      Object.defineProperty(console, '_commandLineAPI', {get: function(){ throw 'Access Denied'; }});
+    })();
+
+    // [10] Detect and block print-screen attempts
+    document.addEventListener('keyup', function(e){
+      if(e.key === 'PrintScreen'){
+        navigator.clipboard.writeText('');
+      }
+    });
     </script>
   </head>
 <body>
